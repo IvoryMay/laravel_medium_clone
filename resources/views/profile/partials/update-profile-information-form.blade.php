@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-gray-900 ">
             {{ __('Profile Information') }}
         </h2>
 
@@ -19,7 +19,7 @@
 
         @if($user->image)
             <div class="flex items-center">
-                <img class="h-20 w-20 rounded-full mr-4" src={{ Storage::url($user->image) }} alt={{ $user->name }}>
+                <img class="h-20 w-20 rounded-full mr-4" src={{ $user->imageUrl() }} alt={{ $user->name }}>
             </div>
        
         @endif

@@ -62,9 +62,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(string $username,Post $post)
     {
-        //
+        return view("post.show", compact("post"));   
     }
 
     /**
