@@ -7,16 +7,12 @@
                 {{-- avatar section --}}
               <div class="flex gap-4 items-center mb-5">
                 <div>
-                    @if($post->user->image)
-                <img class="h-20 w-20  rounded-full" src={{$post->user->imageUrl()  }} alt="{{ $post->user->name }}" />
-                @else
-                <img class="h-20 w-20  rounded-full" src="https://cdn.vectorstock.com/i/500p/46/76/gray-male-head-placeholder-vector-23804676.jpg" alt="dummy image" />
-                @endif
+                   <x-user-avatar :user="$post->user" />
                 </div>
                     <div class="flex flex-col">
                         <div class="flex gap-2 items-center mb-2">
-                        <p class="font-bold  text-md">
-                        {{$post->user->name}}</p>
+                        <a href="{{ route('profile.show', $post->user) }}" class="font-bold  text-md hover:underline">
+                        {{$post->user->name}}</a>
                         <a href="#" class="text-green-600">Follow</a>
                         </div>
                     <div class="flex  gap-3 text-gray-500 text-sm">

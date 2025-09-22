@@ -1,5 +1,5 @@
 <div>
-    <div class="grid grid-cols-2 md:grid-cols-3 md bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 mb-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 md bg-white border border-gray-200 rounded-lg shadow-sm  mb-5">
     
     <div class="px-5 py-4 col-span-2">
         <a href="{{ route('post.show',['username'=>$post->user->username, 

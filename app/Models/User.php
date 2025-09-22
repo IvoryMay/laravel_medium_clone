@@ -8,11 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class User extends Authenticatable 
 // implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 
     /**
      * The attributes that are mass assignable.
