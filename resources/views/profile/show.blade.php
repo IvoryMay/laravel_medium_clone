@@ -23,15 +23,26 @@
                 </div>
 
                 {{-- sidebar --}}
-                <div class="w-[320px] px-8 border-l ">
+<x-follow-ctr :user="$user" >
                     <x-user-avatar :user="$user" size="w-24 h-24" />
                     
-                    <div class="ml-2">
+    <div class="ml-2">
                     <p class="font-bold text-lg mb-2">{{$user->name}}</p>
-                    <p class="text-sm text-gray-500 mb-2">26k followers</p>
+                    <p class="text-sm text-gray-500 mb-2"><span x-text="followerCount"></span> followers</p>
                     <p class="mb-2">{{$user->bio}}</p>
-                    <button class="bg-emerald-500 text-white px-4 py-2 rounded-lg">Follow</button>
+
+
+                    @if ((auth()->user() && auth()->user()->id !== $user->id))
+                    <div class="mt-4">
+                    <button 
+                    @click = "follow()"
+                    class=" text-white px-4 py-2 rounded-lg"
+                    x-text="following ? 'Unfollow' : 'Follow'"
+                    :class="following ? 'bg-red-500' : 'bg-emerald-500'"
+                    >Follow</button>
                     </div>
+                    @endif
+                </x-follow-ctr>
                 </div>
             </div>
             </div>

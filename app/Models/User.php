@@ -20,6 +20,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    
+    public function following(){
+        return $this->belongsToMany(User::class, 'followers',  'follower_id','user_id');
+    }
+
+    public function followers(){
+        return $this->belongsToMany(User::class, 'followers',  'user_id','follower_id',);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -58,5 +68,9 @@ class User extends Authenticatable
             return Storage::url($this->image);
         }
         return null;
+    }
+
+    public function isFollowedBy(User $user){
+        return $this->followers()->where('follower_id', $user->id)->exists();
     }
 }

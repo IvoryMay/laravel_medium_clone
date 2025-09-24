@@ -9,11 +9,13 @@
                 <div>
                    <x-user-avatar :user="$post->user" />
                 </div>
-                    <div class="flex flex-col">
+                    <x-follow-ctr :user="$post->user" class="flex flex-col">
                         <div class="flex gap-2 items-center mb-2">
                         <a href="{{ route('profile.show', $post->user) }}" class="font-bold  text-md hover:underline">
                         {{$post->user->name}}</a>
-                        <a href="#" class="text-green-600">Follow</a>
+                        <button
+                         @click="follow"
+                         x-text="following ? 'Unfollow' : 'Follow'" :class="following ? 'text-red-500' : 'text-emerald-500'" ></button>
                         </div>
                     <div class="flex  gap-3 text-gray-500 text-sm">
                         {{-- @dump($post->created_at) --}}
@@ -21,7 +23,7 @@
                     &middot;
                     <p>{{$post->created_at->format('M d, Y')}}</p>
                     </div>
-                </div>
+                </x-follow-ctr>
               </div>
 
 
