@@ -29,6 +29,10 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'followers',  'user_id','follower_id',);
     }
 
+    public function hasClapped(Post $post){
+        return $post->claps()->where('user_id', $this->id)->exists();
+    }
+
 
     /**
      * The attributes that are mass assignable.

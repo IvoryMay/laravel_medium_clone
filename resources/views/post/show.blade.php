@@ -28,7 +28,7 @@
 
 
               {{-- clap section --}}
-              <x-clap-button />
+              <x-clap-button :post="$post"/>
 
 
               {{-- image section --}}
@@ -47,7 +47,7 @@
                 </span>
               </div>
 
-              <x-clap-button />
+              <x-clap-button :post="$post" />
             </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-8">
