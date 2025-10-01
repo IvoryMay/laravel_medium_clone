@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\PostCreateRequest;
 
+
 class PostController extends Controller
 {
     /**
@@ -17,7 +18,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->simplePaginate(5);
+        $user = auth()->user();
+        $query = Post::query();
+         
+        if($user){
+            $ids = $user->following()->pluck("users.id");
+            // dd($ids);
+            $query->whereIn("user_id", $ids);
+        }
+
+        $posts =$query->simplePaginate(5);
 
         // dd($posts);
         return view("post.index", compact( "posts"));

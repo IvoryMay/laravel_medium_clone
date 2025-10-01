@@ -1,4 +1,6 @@
 @props(['post'])
+@auth
+    
 
 <div 
 x-data="{
@@ -35,3 +37,4 @@ class="border-t border-b p-4 flex gap-2 items-center mb-5">
                 </button>
                 <span x-text="count"></span>
               </div>
+ @endauth
